@@ -25,13 +25,13 @@ type Name struct {
 }
 
 type User struct {
-    Kind       string    `jdb:"-kind"`
-    ID         string    `jdb:"-id"`
-    Email      string    `jdb:",uniquestringkey"`
-    Name       Name      `jdb:",omitempty"`
-    Age        int       `jdb:",omitempty"`
-    CreateTime time.Time `jdb:"-createtime"`
-    UpdateTime time.Time `jdb:"-updatetime"`
+	Kind       string    `jdb:"-kind"`
+	ID         string    `jdb:"-id"`
+	Email      string    `jdb:",uniquestringkey"`
+	Name       Name      `jdb:",omitempty"`
+	Age        int       `jdb:",omitempty"`
+	CreateTime time.Time `jdb:"-createtime"`
+	UpdateTime time.Time `jdb:"-updatetime"`
 }
 
 func (u User) DatabaseNumericKey() (*float64, bool) {

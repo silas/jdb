@@ -64,7 +64,7 @@ var (
 	uniqueStringKeyField = WhereColumn{"unique_string_key"}
 	stringKeyField       = WhereColumn{"string_key"}
 	numericKeyField      = WhereColumn{"numeric_key"}
-	timeKeyField      	 = WhereColumn{"time_key"}
+	timeKeyField         = WhereColumn{"time_key"}
 	dataField            = SelectColumn{"data"}
 	createTimeField      = SelectWhereColumn{"create_time"}
 	updateTimeField      = SelectWhereColumn{"update_time"}

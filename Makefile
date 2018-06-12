@@ -8,7 +8,13 @@ TEST_FULL_ARGS?=-count=1 -failfast
 get:
 	go get -v -t -d ./...
 
+fmt:
+	go fmt ./...
+
 test:
+	go vet github.com/silas/jdb \
+		github.com/silas/jdb/dialect/... \
+		github.com/silas/jdb/test/...
 	go test $(TEST_ARGS) \
 		github.com/silas/jdb \
 		github.com/silas/jdb/dialect/... \
