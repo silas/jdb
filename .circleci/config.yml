@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.10
+      - image: circleci/mysql:5
+      - image: circleci/postgres:9
+
+    working_directory: /go/src/github.com/silas/jdb
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+      - run: sudo apt-get install libsqlite3-dev -y
+      - run:
+          command: make get test_full
+          environment:
+            JDB_MYSQL_DSN: root:@tcp(localhost:3306)/circle_test?parseTime=true
+            JDB_POSTGRES_DSN: postgres://root:@localhost:5432/circle_test?sslmode=disable
