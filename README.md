@@ -1,6 +1,9 @@
 # jdb
 
-jdb is a SQL query builder for the JSON features of MySQL, PostgreSQL and SQLite.
+jdb is a simple document database built on the JSON features of MySQL,
+PostgreSQL, and SQLite.
+
+It provides a migration helper, query builder, and struct mapper.
 
 This package is currently in development and the API is not stable.
 
