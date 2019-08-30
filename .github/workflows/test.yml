@@ -1,0 +1,37 @@
+name: jdb CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql
+        ports:
+        - 3306:3306
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: test
+      postgres:
+        image: postgres
+        ports:
+        - 5432:5432
+        env:
+          POSTGRES_DB: test
+
+    steps:
+    - name: Set up Go 1.12
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.12
+      id: go
+    - uses: actions/checkout@v1
+    - name: Test
+      run: |
+        apt-get install libsqlite3-dev -y
+        make get test_full
+      env:
+        JDB_MYSQL_DSN: root:@tcp(localhost:3306)/test?parseTime=true
+        JDB_POSTGRES_DSN: postgres://postgres:@localhost:5432/postgres?sslmode=disable
