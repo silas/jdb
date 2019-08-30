@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Test
       run: |
-        apt-get install libsqlite3-dev -y
+        sudo apt-get install libsqlite3-dev -y
         make get test_full
       env:
         JDB_MYSQL_DSN: root:@tcp(localhost:3306)/test?parseTime=true
