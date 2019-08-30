@@ -6,21 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql
-        ports:
-        - 3306:3306
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: test
-      postgres:
-        image: postgres
-        ports:
-        - 5432:5432
-        env:
-          POSTGRES_DB: test
-
     steps:
     - name: Set up Go 1.12
       uses: actions/setup-go@v1
